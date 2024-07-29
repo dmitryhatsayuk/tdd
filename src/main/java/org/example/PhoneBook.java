@@ -1,6 +1,8 @@
 package org.example;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 public class PhoneBook {
     private static HashMap<Integer,String> book;
@@ -11,16 +13,38 @@ public class PhoneBook {
         book.put(number,name);
         return number;
     }
-    public String findByNumber (Integer number){
-        if (book == null){
+    public String findByNumber (Integer number) {
+
+        String result = null;
+        if (book == null) {
             System.out.println("Телефонная книга пуста");
-        }
-        else if (!book.containsKey(number)){
+        } else if (!book.containsKey(number)) {
             System.out.println("номер не найден");
+        } else {
+            result = book.get(number);
         }
-         return book.get(number);
+        return result;
     }
-    public int findByName(String name){
-        return 0;
+    public int findByName(String name) {
+        int res = 0;
+        if (book == null) {
+            System.out.println("Телефонная книга пуста");
+        } else if (!book.containsValue(name)) {
+            System.out.println("Имя не найдено");
+        } else {
+            for (int i = 0; i < book.size(); i++) {
+                Optional<Integer> result = book.entrySet()
+                        .stream()
+                        .filter(entry -> name.equals(entry.getValue()))
+                        .map(Map.Entry::getKey)
+                        .findFirst();
+
+                if (result.isPresent()) {
+                    res = result.get();
+                }
+            }
+        }
+        return res;
     }
+
 }
