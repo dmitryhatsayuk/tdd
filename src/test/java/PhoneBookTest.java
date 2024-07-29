@@ -10,7 +10,7 @@ public class PhoneBookTest {
     String name = "abcdefg";
     Integer number = 1234567890;
     //when
-    int result = book.add(name, number);
+    int result = book.add(number, name);
     //then
     Assertions.assertEquals(result,number);
 }
@@ -21,7 +21,7 @@ public class PhoneBookTest {
     int number = 1234567890;
     String name = "abcdefg";
     //then
-    book.add(name,number);
+    book.add(number,name);
     String result = book.findByNumber(number);
     //then
     Assertions.assertEquals(name,result);

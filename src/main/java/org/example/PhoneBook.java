@@ -3,15 +3,18 @@ package org.example;
 import java.util.HashMap;
 
 public class PhoneBook {
-    private static HashMap<String , Integer> book;
-    public int add (String name,int number){
+    private static HashMap<Integer,String> book;
+    public int add (int number,String name){
         if (book==null){
             book = new HashMap<>();
         }
-        book.put(name,number);
+        book.put(number,name);
         return number;
     }
     public String findByNumber (Integer number){
-        return null;
+        if (book == null){
+            System.out.println("Телефонная книга пуста");
+        }
+         return book.get(number);
     }
 }
