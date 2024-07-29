@@ -1,17 +1,22 @@
 package org.example;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
 
 public class PhoneBook {
-    private  HashMap<Integer,String> book;
-    public int add (int number,String name){
-        if (book==null){
+    private HashMap<Integer, String> book;
+
+    public int add(int number, String name) {
+        if (book == null) {
             book = new HashMap<>();
         }
-        book.put(number,name);
+        book.put(number, name);
         return number;
     }
-    public String findByNumber (Integer number) {
+
+    public String findByNumber(Integer number) {
 
         String result = null;
         if (book == null) {
@@ -23,6 +28,7 @@ public class PhoneBook {
         }
         return result;
     }
+
     public int findByName(String name) {
         int res = 0;
         if (book == null) {
@@ -31,11 +37,7 @@ public class PhoneBook {
             System.out.println("Имя не найдено");
         } else {
             for (int i = 0; i < book.size(); i++) {
-                Optional<Integer> result = book.entrySet()
-                        .stream()
-                        .filter(entry -> name.equals(entry.getValue()))
-                        .map(Map.Entry::getKey)
-                        .findFirst();
+                Optional<Integer> result = book.entrySet().stream().filter(entry -> name.equals(entry.getValue())).map(Map.Entry::getKey).findFirst();
 
                 if (result.isPresent()) {
                     res = result.get();
@@ -44,11 +46,12 @@ public class PhoneBook {
         }
         return res;
     }
-    public String printAllNames (){
+
+    public String printAllNames() {
         HashMap<Integer, String> result = new LinkedHashMap<>();
-       book.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEach(e ->result.put(e.getKey(),e.getValue()));
+        book.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEach(e -> result.put(e.getKey(), e.getValue()));
         return result.values().toString();
-        
+
     }
 
 }
