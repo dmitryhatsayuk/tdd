@@ -29,25 +29,25 @@ public class PhoneBookTest {
 @Test
     public void findByName () {
 //given
-    PhoneBook book = new PhoneBook();
+    PhoneBook book2 = new PhoneBook();
     String name= "abcdefg";
     int number = 1234567890;
-    book.add(number,name);
+    book2.add(number,name);
     //when
-    int result= book.findByName(name);
+    int result= book2.findByName(name);
     //then
     Assertions.assertEquals(number,result);
     }
 @Test
     public void printAllNames(){
         //given
-    PhoneBook book = new PhoneBook();
-    book.add(456,"def");
-    book.add(123,"abc");
+    PhoneBook book3 = new PhoneBook();
+    book3.add(456,"def");
+    book3.add(123,"abc");
 
     //when
-    String result = book.printAllNames();
+    String result = book3.printAllNames();
     //then
-    Assertions.assertEquals(result,"abc def");
+    Assertions.assertEquals("[abc, def]",result);
 }
 }

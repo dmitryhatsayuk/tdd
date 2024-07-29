@@ -1,11 +1,9 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class PhoneBook {
-    private static HashMap<Integer,String> book;
+    private  HashMap<Integer,String> book;
     public int add (int number,String name){
         if (book==null){
             book = new HashMap<>();
@@ -47,7 +45,10 @@ public class PhoneBook {
         return res;
     }
     public String printAllNames (){
-        return null;
+        HashMap<Integer, String> result = new LinkedHashMap<>();
+       book.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEach(e ->result.put(e.getKey(),e.getValue()));
+        return result.values().toString();
+        
     }
 
 }
