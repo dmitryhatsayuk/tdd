@@ -30,7 +30,7 @@ public class PhoneBookTest {
     public void findByName () {
 //given
     PhoneBook book = new PhoneBook();
-    String name= "abcdegf";
+    String name= "abcdefg";
     int number = 1234567890;
     book.add(number,name);
     //when
@@ -38,4 +38,16 @@ public class PhoneBookTest {
     //then
     Assertions.assertEquals(number,result);
     }
+@Test
+    public void printAllNames(){
+        //given
+    PhoneBook book = new PhoneBook();
+    book.add(456,"def");
+    book.add(123,"abc");
+
+    //when
+    String result = book.printAllNames();
+    //then
+    Assertions.assertEquals(result,"abc def");
+}
 }

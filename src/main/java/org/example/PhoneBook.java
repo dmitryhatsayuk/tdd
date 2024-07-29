@@ -46,5 +46,8 @@ public class PhoneBook {
         }
         return res;
     }
+    public String printAllNames (){
+        return null;
+    }
 
 }
