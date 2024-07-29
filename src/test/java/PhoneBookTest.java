@@ -20,10 +20,22 @@ public class PhoneBookTest {
     PhoneBook book = new PhoneBook();
     int number = 1234567890;
     String name = "abcdefg";
-    //then
+    //when
     book.add(number,name);
     String result = book.findByNumber(number);
     //then
     Assertions.assertEquals(name,result);
 }
+@Test
+    public void findByName () {
+//given
+    PhoneBook book = new PhoneBook();
+    String name= "abcdegf";
+    int number = 1234567890;
+    book.add(number,name);
+    //when
+    int result= book.findByName(name);
+    //then
+    Assertions.assertEquals(number,result);
+    }
 }

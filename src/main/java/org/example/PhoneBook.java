@@ -15,6 +15,12 @@ public class PhoneBook {
         if (book == null){
             System.out.println("Телефонная книга пуста");
         }
+        else if (!book.containsKey(number)){
+            System.out.println("номер не найден");
+        }
          return book.get(number);
+    }
+    public int findByName(String name){
+        return 0;
     }
 }
